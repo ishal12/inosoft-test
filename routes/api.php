@@ -26,7 +26,7 @@ Route::group(["middleware" => ["jwt.verify"]], function () {
     Route::get("/username", [AuthController::class, "profile"]);
 
     Route::controller(PenjualanController::class)->group(function () {
-        Route::get("/penjualans/", "index")->middleware("api");
+        Route::get("/penjualans/", "index");
         Route::get("/penjualans/{id}", "show");
         Route::get("/penjualans/kendaraan/{tipe_kendaraan}", "showKendaraans");
         Route::post("/penjualans", "store");
@@ -39,7 +39,7 @@ Route::group(["middleware" => ["jwt.verify"]], function () {
 
     Route::controller(MobilController::class)->group(function () {
         Route::get("/mobils", "index");
-        Route::get("/mobils/trashed", "trashed");
+        Route::get("/mobils/terjual", "trashed");
         Route::get("/mobils/{id}", "show");
         Route::put("/mobils/{id}", "update");
         Route::delete("/mobils/{id}", "destroy");
@@ -47,7 +47,7 @@ Route::group(["middleware" => ["jwt.verify"]], function () {
 
     Route::controller(MotorController::class)->group(function () {
         Route::get("/motors", "index");
-        Route::get("/motors/trashed", "trashed");
+        Route::get("/motors/terjual", "trashed");
         Route::get("/motors/{id}", "show");
         Route::put("/motors/{id}", "update");
         Route::delete("/motors/{id}", "destroy");
