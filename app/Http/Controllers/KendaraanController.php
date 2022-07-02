@@ -16,31 +16,40 @@ class KendaraanController extends Controller
         $this->kendaraanService = $kendaraanService;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         try {
             $kendaraan = $this->kendaraanService->getKendaraans();
 
-            if ($kendaraan) {
-                return ResponseFormat::successResponse($kendaraan);
-            } else {
+            if (!$kendaraan) {
                 return ResponseFormat::validationResponse("Failed to load.");
             }
+
+            return ResponseFormat::successResponse($kendaraan);
         } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }
 
+    /**
+     * Display a count of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function countKendaraans()
     {
         try {
             $kendaraan = $this->kendaraanService->countKendaraans();
 
-            if ($kendaraan) {
-                return ResponseFormat::successResponse($kendaraan);
-            } else {
+            if (!$kendaraan) {
                 return ResponseFormat::validationResponse("Failed to load.");
             }
+            return ResponseFormat::successResponse($kendaraan);
         } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }

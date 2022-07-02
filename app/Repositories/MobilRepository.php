@@ -4,29 +4,51 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use Jenssegers\Mongodb\Eloquent\Model;
 use App\Models\Mobil;
 
 class MobilRepository
 {
-    protected $mobils;
+    protected $mobil;
 
-    public function __construct(Mobil $mobils)
+    public function __construct(Mobil $mobil)
     {
-        $this->mobils = $mobils;
+        $this->mobil = $mobil;
     }
 
     public function getAll()
     {
-        $mobils = Mobil::all();
+        $mobil = Mobil::all();
 
-        return $mobils;
+        return $mobil;
+    }
+
+    public function getTrashed()
+    {
+        $mobil = Mobil::onlyTrashed()->get();
+
+        return $mobil;
     }
 
     public function findById($id)
     {
-        $mobils = Mobil::find($id);
+        $mobil = Mobil::find($id);
 
-        return $mobils;
+        return $mobil;
+    }
+
+    public function update($data, $id)
+    {
+        $mobil = Mobil::find($id);
+        $mobil->warna = $data["warna"];
+        $mobil->harga = $data["harga"];
+
+        return $mobil->save();
+    }
+
+    public function delete($id)
+    {
+        $mobil = Mobil::find($id);
+
+        return $mobil->delete();
     }
 }

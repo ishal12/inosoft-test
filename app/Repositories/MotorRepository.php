@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Repositories;
 
-use Jenssegers\Mongodb\Eloquent\Model;
 use App\Models\Motor;
 
 class MotorRepository
@@ -23,10 +22,33 @@ class MotorRepository
         return $motor;
     }
 
+    public function getTrashed()
+    {
+        $motor = Motor::onlyTrashed()->get();
+
+        return $motor;
+    }
+
     public function findById($id)
     {
         $motor = Motor::find($id);
 
         return $motor;
+    }
+
+    public function update($data, $id)
+    {
+        $motor = Motor::find($id);
+        $motor->warna = $data["warna"];
+        $motor->harga = $data["harga"];
+
+        return $motor->save();
+    }
+
+    public function delete($id)
+    {
+        $motor = Motor::find($id);
+
+        return $motor->delete();
     }
 }
