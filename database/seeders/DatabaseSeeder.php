@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Motor::factory(10)->create();
-        // Mobil::factory(10)->create();
+        Motor::factory(10)->create();
+        Mobil::factory(10)->create();
         // \App\Models\User::factory(10)->create();
     }
 }
