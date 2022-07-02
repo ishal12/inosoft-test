@@ -18,30 +18,30 @@ class KendaraanController extends Controller
 
     public function index()
     {
-        try{
+        try {
             $kendaraan = $this->kendaraanService->getKendaraans();
 
-            if($kendaraan){
+            if ($kendaraan) {
                 return ResponseFormat::successResponse($kendaraan);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }
 
     public function countKendaraans()
     {
-        try{
+        try {
             $kendaraan = $this->kendaraanService->countKendaraans();
 
-            if($kendaraan){
+            if ($kendaraan) {
                 return ResponseFormat::successResponse($kendaraan);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }

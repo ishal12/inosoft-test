@@ -18,30 +18,30 @@ class MotorController extends Controller
 
     public function index()
     {
-        try{
+        try {
             $motor = $this->motorService->getMotors();
 
-            if($motor){
+            if ($motor) {
                 return ResponseFormat::successResponse($motor);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }
 
     public function show($id)
     {
-        try{
+        try {
             $motor = $this->motorService->findMotor($id);
 
-            if($motor){
+            if ($motor) {
                 return ResponseFormat::successResponse($motor);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }

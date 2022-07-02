@@ -9,16 +9,12 @@ use App\Models\Kendaraan;
 
 class Mobil extends Kendaraan
 {
-    protected $connection = 'mongodb';
-    protected $collection = 'mobils';
-    
+    protected $connection = "mongodb";
+    protected $collection = "mobils";
+
     public function __construct(array $attributes = [])
     {
-        $fillable = [
-            'mesin',
-            'kapasitas_penumpang',
-            'tipe',
-        ];
+        $fillable = ["mesin", "kapasitas_penumpang", "tipe"];
 
         parent::__construct($attributes);
         $this->mergeFillable($this->fillable);

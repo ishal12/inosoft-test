@@ -9,16 +9,12 @@ use App\Models\Kendaraan;
 
 class Motor extends Kendaraan
 {
-    protected $connection = 'mongodb';
-    protected $collection = 'motors';
-    
+    protected $connection = "mongodb";
+    protected $collection = "motors";
+
     public function __construct(array $attributes = [])
     {
-        $fillable = [
-            'mesin',
-            'tipe_suspensi',
-            'tipe_transmisi',
-        ];
+        $fillable = ["mesin", "tipe_suspensi", "tipe_transmisi"];
 
         parent::__construct($attributes);
         $this->mergeFillable($this->fillable);

@@ -14,9 +14,5 @@ class Kendaraan extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'tahun_keluaran',
-        'warna',
-        'harga',
-    ];
+    protected $fillable = ["tahun_keluaran", "warna", "harga"];
 }

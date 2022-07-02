@@ -18,30 +18,30 @@ class MobilController extends Controller
 
     public function index()
     {
-        try{
+        try {
             $mobil = $this->mobilService->getMobils();
 
-            if($mobil){
+            if ($mobil) {
                 return ResponseFormat::successResponse($mobil);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }
 
     public function show($id)
     {
-        try{
+        try {
             $mobil = $this->mobilService->findMobil($id);
 
-            if($mobil){
+            if ($mobil) {
                 return ResponseFormat::successResponse($mobil);
-            }else{
-                return ResponseFormat::validationResponse('Failed to load.');
+            } else {
+                return ResponseFormat::validationResponse("Failed to load.");
             }
-        }catch(Exception $err){
+        } catch (Exception $err) {
             return ResponseFormat::errorResponse($err->getMessage());
         }
     }

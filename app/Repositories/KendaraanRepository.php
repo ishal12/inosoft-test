@@ -26,8 +26,8 @@ class KendaraanRepository
         $mobils = Mobil::all();
         $motors = Motor::all();
 
-        $kendaraans = $mobils->merge($motors)->sortByDesc('harga');
+        $kendaraans = $mobils->merge($motors)->sortByDesc("harga");
 
-        return $kendaraans->values()->all();;
+        return $kendaraans->values()->all();
     }
 }
